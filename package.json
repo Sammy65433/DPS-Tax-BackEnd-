@@ -1,0 +1,22 @@
+{
+  "name": "dps-tax-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "resend": "^6.17.2",
+    "twilio": "^6.0.2",
+    "xlsx": "^0.18.5"
+  }
+}
