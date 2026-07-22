@@ -22,6 +22,18 @@ app.use(
   })
 );
 
+process.on("uncaughtException", err => {
+  console.error("Uncaught Exception:", err);
+});
+
+process.on("unhandledRejection", err => {
+  console.error("Unhandled Rejection:", err);
+});
+app.get("/health", (req, res) => {
+  res.status(200).json({ ok: true });
+});
+
+
 app.use(express.json());
 
 console.log("SUPABASE_URL exists:", !!process.env.SUPABASE_URL);
@@ -1019,6 +1031,11 @@ app.get("/api/parse-client-emails", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5001;
+console.log("Starting server...");
+console.log("BASE_URL:", BASE_URL);
+console.log("FRONTEND_URL:", FRONTEND_URL);
+
+
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
