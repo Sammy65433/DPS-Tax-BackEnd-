@@ -1041,3 +1041,21 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
 
+
+
+
+
+Good. The server is up. Now test the URL directly in a new tab:
+
+- `https://dps-tax-backend-production.up.railway.app/`
+- `https://dps-tax-backend-production.up.railway.app/health`
+
+If that still fails while logs say online, it’s likely Railway networking/domain propagation for a minute. Refresh and retry in an incognito tab.
+
+If `/health` works now, next:
+- restore your real `server.js`
+- redeploy
+- test `/health` again before testing frontend
+
+Important:
+the minimal server proved Railway itself works. So any future failure is from your app code, not Railway.
