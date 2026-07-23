@@ -1,17 +1,12 @@
-import express from "express";
+import http from "http";
 
-const app = express();
+const PORT = process.env.PORT || 8080;
 
-app.get("/", (req, res) => {
-  res.status(200).send("hello");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(JSON.stringify({ ok: true, path: req.url }));
 });
 
-app.get("/health", (req, res) => {
-  res.status(200).json({ ok: true });
-});
-
-const PORT = Number(process.env.PORT) || 8080;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+server.listen(PORT, () => {
+  console.log(`HTTP server running on port ${PORT}`);
 });
